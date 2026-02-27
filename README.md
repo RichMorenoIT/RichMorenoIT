@@ -12,7 +12,7 @@ I'm passionate about cybersecurity and love tackling complex challenges through 
 
 - **[Threat Hunting Scenario (Tor Browser Usage)]()**
 
-<hr/>
+https://github.com/RichMorenoIT/threat-hunting-scenario-tor/blob/main/README.md
 
 ## 🤳 Connect With Me
 
