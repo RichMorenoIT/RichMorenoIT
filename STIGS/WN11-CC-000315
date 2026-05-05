@@ -1,0 +1,73 @@
+ <#
+.SYNOPSIS
+    This PowerShell script ensures The Windows Installer feature "Always install with elevated privileges" must be disabled.
+
+.NOTES
+    Author          : Ricardo Moreno
+    LinkedIn        : linkedin.com/in/ricardo-moreno-0177762b8
+    GitHub          : github.com/RichMorenoIT
+    Date Created    : 2026-05-05
+    Last Modified   : 2026-05-05
+    Version         : 1.0
+    CVEs            : N/A
+    Plugin IDs      : N/A
+    STIG-ID         : WN11-CC-000315
+
+.TESTED ON
+    Date(s) Tested  : 
+    Tested By       : 
+    Systems Tested  : 
+    PowerShell Ver. : 
+
+.USAGE
+    Put any usage instructions here.
+    Example syntax:
+    PS C:\> .\WN11-CC-000315.ps1 
+#>
+
+
+$ErrorActionPreference = "Stop"
+
+$path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Installer"
+
+try {
+# Create Installer policy path if missing
+if (-not (Test-Path $path)) {
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows" -Name "Installer"
+-Force | Out-Null
+Write-Host "Created registry path: $path"
+}
+
+# --- Apply secure policy settings ---
+
+# Disable Windows Installer for unmanaged installs
+# 0 = Always enabled
+# 1 = Disable for non-managed apps (Recommended - CIS/Tenable)
+# 2 = Always disabled (stricter)
+New-ItemProperty -Path $path `
+    -Name "DisableMSI" `
+    -Value 1 `
+    -PropertyType DWord `
+    -Force | Out-Null
+
+# Prevent privilege escalation via MSI (CRITICAL setting)
+# Must be 0 (disabled)
+New-ItemProperty -Path $path `
+    -Name "AlwaysInstallElevated" `
+    -Value 0 `
+    -PropertyType DWord `
+    -Force | Out-Null
+
+# --- Verification ---
+$props = Get-ItemProperty -Path $path
+
+Write-Host "Verification Results:"
+Write-Host "DisableMSI =" $props.DisableMSI
+Write-Host "AlwaysInstallElevated =" $props.AlwaysInstallElevated
+
+Write-Host "SUCCESS: Tenable remediation applied." -ForegroundColor Green
+
+}
+catch {
+Write-Error "FAILED: $($_.Exception.Message)"
+}
