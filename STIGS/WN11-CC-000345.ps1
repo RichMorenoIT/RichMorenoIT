@@ -25,8 +25,7 @@
     Example syntax:
     PS C:\> .\STIG-ID-WN11-CC-000345.ps1 
 
-# WN11-CC-000345
-# Disable Basic Authentication for the WinRM Service
+#>
 
 $RegPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service"
 $ValueName = "AllowBasic"
