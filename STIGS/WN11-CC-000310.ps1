@@ -27,6 +27,7 @@
 # STIG ID: WN11-CC-000310
 # Prevent users from changing installation options
 
+
 $RegPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Installer"
 
 # Create registry path if it doesn't exist
