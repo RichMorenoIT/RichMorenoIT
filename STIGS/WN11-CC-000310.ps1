@@ -23,7 +23,7 @@
 # STIG ID: WN11-CC-000310
 # Prevent users from changing installation options
 
-#<
+#>
 
 # STIG ID: WN11-CC-000310
 # Prevent users from changing installation options
