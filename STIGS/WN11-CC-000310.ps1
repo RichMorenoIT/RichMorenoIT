@@ -19,11 +19,6 @@
     Tested By       : 
     Systems Tested  : 
     PowerShell Ver. : 
-
-.USAGE
-    Put any usage instructions here.
-    Example syntax:
-
 # STIG ID: WN11-CC-000310
 # Prevent users from changing installation options
 
@@ -46,3 +41,4 @@ Write-Host "WN11-CC-000310 remediation applied successfully."
 
 # Display current setting for verification
 Get-ItemProperty -Path $RegPath | Select-Object EnableUserControl
+
