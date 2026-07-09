@@ -46,7 +46,3 @@ Write-Host "WN11-CC-000310 remediation applied successfully."
 
 # Display current setting for verification
 Get-ItemProperty -Path $RegPath | Select-Object EnableUserControl
-
-Get-ItemProperty `
-    -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Installer" `
-    -Name EnableUserControl
