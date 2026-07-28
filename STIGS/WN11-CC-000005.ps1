@@ -12,7 +12,7 @@
     Version         : 1.0
     CVEs            : N/A
     Plugin IDs      : N/A
-    STIG-ID         : WN11-AU-000005
+    STIG-ID         : WN11-CC-000005
 
 .TESTED ON
     Date(s) Tested  : 
@@ -23,7 +23,7 @@
 .USAGE
     Put any usage instructions here.
     Example syntax:
-    PS C:\> .\STIG-ID-WN11-AU-000005.ps1 
+    PS C:\> .\STIG-ID-WN11-CC-000005.ps1 
 #>
 
 
