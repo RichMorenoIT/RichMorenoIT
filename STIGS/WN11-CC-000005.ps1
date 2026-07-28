@@ -38,5 +38,8 @@ New-ItemProperty `
     -Value 1 `
     -Force | Out-Null
 
+    Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" |
+Select-Object NoLockScreenCamera
+
 # Refresh Group Policy
 gpupdate /force
